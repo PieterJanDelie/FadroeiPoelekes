@@ -3,23 +3,134 @@
 }
 
 .about-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background: linear-gradient(135deg, #2D5016 0%, #1a2f0b 100%);
-  color: #F5F5DC;
-  padding: 6rem 0 4rem 0;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 80, 22, 0.5) 0%,
+    rgba(26, 47, 11, 0.6) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
   text-align: center;
+  color: #FFFFFF;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.2);
+  border: 2px solid #FF6B35;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.badge-text {
+  color: #FF6B35;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .about-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #F5F5DC;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 0.8),
+    1px 1px 3px rgba(0, 0, 0, 0.9);
+  font-weight: 900;
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
-  opacity: 0.9;
+  font-size: 1.4rem;
+  opacity: 1;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  color: #F0F0F0;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+  min-width: 120px;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #FF6B35;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .team-history {
@@ -80,10 +191,68 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border-top: 4px solid #FF6B35;
+  position: relative;
+}
+
+.member-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #FF6B35;
+  color: #FFFFFF;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.transfer-value {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(45deg, #2D5016, #4CAF50);
+  color: #FFFFFF;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(45, 80, 22, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .member-card:hover {
   transform: translateY(-5px);
+}
+
+.member-photo-container {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #FF6B35;
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.member-photo-container:hover {
+  transform: scale(1.05);
+}
+
+.member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.member-photo:hover {
+  transform: scale(1.1);
 }
 
 .member-avatar {
@@ -108,14 +277,29 @@
   font-size: 1.5rem;
   color: #2D5016;
   margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.nickname {
+  font-size: 1rem;
+  color: #FF6B35;
+  font-weight: 500;
+  font-style: italic;
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .member-position {
   color: #FF6B35;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  background: rgba(255, 107, 53, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 .member-bio {
@@ -132,47 +316,6 @@
   margin: 1rem 0 0 0;
 }
 
-.team-values-detailed {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, #F5F5DC 0%, #E8E8E8 100%);
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.value-card {
-  background: #FFFFFF;
-  padding: 2.5rem;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.value-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.value-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.value-card h3 {
-  font-size: 1.5rem;
-  color: #2D5016;
-  margin-bottom: 1rem;
-}
-
-.value-card p {
-  color: #666;
-  line-height: 1.6;
-}
-
 /* Mobile responsiveness */
 @media (max-width: 968px) {
   .history-grid {
@@ -187,7 +330,7 @@
 
 @media (max-width: 768px) {
   .about-hero {
-    padding: 4rem 0 3rem 0;
+    min-height: 60vh;
   }
   
   .about-hero h1 {
@@ -196,11 +339,30 @@
   
   .hero-subtitle {
     font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .stat-item {
+    min-width: 200px;
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    padding: 1rem;
   }
   
   .team-history,
-  .team-members,
-  .team-values-detailed {
+  .team-members {
     padding: 3rem 0;
   }
   
@@ -212,7 +374,36 @@
     grid-template-columns: 1fr;
   }
   
-  .values-grid {
-    grid-template-columns: 1fr;
+  .member-photo-container {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .member-position {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .member-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .transfer-value {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .member-name {
+    font-size: 1.3rem;
+  }
+  
+  .nickname {
+    font-size: 0.9rem;
   }
 }
