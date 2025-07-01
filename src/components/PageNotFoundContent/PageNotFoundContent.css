@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 2rem;
+}
+
+.errorCode {
+  font-size: 6rem;
+  color: #ff6b6b;
+  margin: 0;
+}
+
+.message {
+  font-size: 2rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 1rem 0 2rem;
+}
+
+.homeButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.homeButton:hover {
+  background-color: #45a049;
+}

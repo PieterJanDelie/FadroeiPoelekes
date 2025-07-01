@@ -1,0 +1,24 @@
+:root {
+  --white: #ffffff;
+  --text-color: #000000;
+  --secondary-text-color: #323232;
+  --primary-color: #ffbf00;
+  --primary-color-hover: #bd8e00;
+  --secondary-color: #00bbff;
+  --secondary-color-hover: #006c90cc;
+  --tertiary-color: #ff0000;
+  --tertiary-color-hover: #c00000;
+  --background-color: #f8f8f8;
+  --accent-color: #61fd00;
+  --accent-color-hover: #4ac200;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+h1, h2, h3, h4, h5, h6, div, span, body, img, button, link, nav, ul, li {
+  transition: all 0.3s ease-in-out;
+}

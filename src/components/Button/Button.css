@@ -1,0 +1,88 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Maat-opties */
+.button.size-XS {
+  font-size: 12px;
+  padding: 4px 8px;
+  margin: 5px;
+}
+
+.button.size-S {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 8px;
+}
+
+.button.size-M {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+.button.size-L {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 12px;
+}
+
+.button.size-XL {
+  font-size: 20px;
+  padding: 16px 32px;
+  margin: 14px;
+}
+
+/* Stijlen voor de types */
+.button.primary {
+  background-color: var(--button-color);
+  color: white;
+  border: var(--button-color) solid 3px;
+}
+
+.button.primary:hover {
+  color: var(--button-color);
+  background-color: transparent;
+}
+
+.button.secondary {
+  background: none;
+  color: var(--button-color);
+  font-weight: bold;
+  border: var(--button-color) solid 3px;
+}
+
+.button.secondary:hover {
+  background-color: var(--button-color);
+  color: white;
+}
+
+.button.tertiary {
+  background-color: #f3f3f3;
+  color: var(--button-color);
+  border: 3px solid #ddd;
+}
+
+.button.tertiary:hover {
+  background-color: #e0e0e0;
+  border: var(--button-color) solid 3px;
+}
+
+.button.ghost {
+  background: none;
+  color: var(--button-color);
+  font-weight: bold;
+  border: transparent solid 3px;
+}
+
+.button.ghost:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: var(--button-color) solid 3px;
+}
