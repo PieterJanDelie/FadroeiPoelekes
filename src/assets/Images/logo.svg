@@ -1,0 +1,8 @@
+<!-- Placeholder SVG logo for Fadroei Poelekes -->
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="28" fill="#2D5016" stroke="#FF6B35" stroke-width="2"/>
+  <text x="30" y="20" text-anchor="middle" fill="#F5F5DC" font-family="Arial, sans-serif" font-size="8" font-weight="bold">FP</text>
+  <text x="30" y="40" text-anchor="middle" fill="#F5F5DC" font-family="Arial, sans-serif" font-size="6">SPORTS</text>
+  <circle cx="15" cy="15" r="3" fill="#FF6B35"/>
+  <circle cx="45" cy="45" r="3" fill="#FF6B35"/>
+</svg>

@@ -1,12 +1,14 @@
 import React from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
-import DemoFiles from "../../components/Demofiles/Demofiles";
+import Hero from "../../components/Hero/Hero";
+import TeamIntro from "../../components/TeamIntro/TeamIntro";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <DefaultLayout>
-      <DemoFiles/>
+    <DefaultLayout header={false}>
+      <Hero />
+      <TeamIntro />
     </DefaultLayout>
   );
 };
