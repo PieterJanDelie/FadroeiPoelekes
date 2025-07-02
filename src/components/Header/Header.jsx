@@ -12,7 +12,11 @@ const Header = ({ transparentHeader = false }) => {
   const shouldBeTransparent =
     transparentHeader ||
     location.pathname === "/" ||
-    location.pathname === "/home";
+    location.pathname === "/home" ||
+    location.pathname === "/about"||
+    location.pathname === "/tournaments"||
+    location.pathname === "/gallery"||
+    location.pathname === "/contact";
 
   useEffect(() => {
     const handleScroll = () => {
