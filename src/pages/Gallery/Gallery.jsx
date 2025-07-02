@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import Masonry from "react-masonry-css";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import "./Gallery.css";
 import teamPhoto from "../../assets/Images/ploegfoto.jpg";
@@ -12,19 +15,44 @@ import pieterJanImg from "../../assets/Images/Pieter-Jan.jpg";
 import larsImg from "../../assets/Images/Lars.jpg";
 import robinImg from "../../assets/Images/Robin.jpg";
 import runeImg from "../../assets/Images/Rune.jpg";
+import consobe from "../../assets/Images/Consobe.png";
+import buyckVisuals from "../../assets/Images/BuyckVisuals.png";
+import sportkafe from "../../assets/Images/sportkafe.avif";
 
-const Gallery = () => {
+const PhotoGallery = () => {
   const [searchParams] = useSearchParams();
   const [selectedTournament, setSelectedTournament] = useState("all");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [showGallery, setShowGallery] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   // Check for tournament parameter in URL
   useEffect(() => {
-    const tournamentParam = searchParams.get('tournament');
+    const tournamentParam = searchParams.get("tournament");
     if (tournamentParam) {
       setSelectedTournament(tournamentParam);
     }
   }, [searchParams]);
+
+  const partners = [
+    {
+      name: "Consobe",
+      logo: consobe,
+      url: null,
+      type: "partner",
+    },
+    {
+      name: "Buyck Visuals",
+      logo: buyckVisuals,
+      url: null,
+      type: "partner",
+    },
+    {
+      name: "Sportkafé Desselgem",
+      logo: sportkafe,
+      url: "https://sportkaffeedesselgem.be/",
+      type: "partner",
+    },
+  ];
 
   const tournaments = [
     {
@@ -33,11 +61,11 @@ const Gallery = () => {
       location: "Sportpark Waregem",
       date: "Juli 2024",
       photos: [
-        { src: teamPhoto, alt: "Team foto Zomertornooi 2024", caption: "Volledige team opstelling" },
-        { src: zulteTifoImg, alt: "Sfeerbeeld Zomertornooi", caption: "Fantastische sfeer op de tribune" },
-        { src: gillesImg, alt: "Gilles in actie", caption: "Gilles maakt een belangrijke save" },
-        { src: wannesImg, alt: "Wannes verdedigt", caption: "Sterke verdediging van Wannes" }
-      ]
+        { src: teamPhoto, alt: "Team foto Zomertornooi 2024", type: "photo" },
+        { src: zulteTifoImg, alt: "Sfeerbeeld Zomertornooi", type: "photo" },
+        { src: gillesImg, alt: "Gilles in actie", type: "photo" },
+        { src: wannesImg, alt: "Wannes verdedigt", type: "photo" },
+      ],
     },
     {
       id: "lente-2024",
@@ -45,11 +73,11 @@ const Gallery = () => {
       location: "Sportcomplex Deinze",
       date: "April 2024",
       photos: [
-        { src: krijnImg, alt: "Krijn in het middenveld", caption: "Krijn controleert het middenveld" },
-        { src: pieterJanImg, alt: "Pieter-Jan tackelt", caption: "Perfecte sliding van PJ" },
-        { src: robinImg, alt: "Robin dribbelt", caption: "Robin in volle actie op de flank" },
-        { src: heroImg, alt: "Teamviering", caption: "Feest na een belangrijke overwinning" }
-      ]
+        { src: krijnImg, alt: "Krijn in het middenveld", type: "photo" },
+        { src: pieterJanImg, alt: "Pieter-Jan tackelt", type: "photo" },
+        { src: robinImg, alt: "Robin dribbelt", type: "photo" },
+        { src: heroImg, alt: "Teamviering", type: "photo" },
+      ],
     },
     {
       id: "winter-2023",
@@ -57,11 +85,11 @@ const Gallery = () => {
       location: "Indoor Sporthal Gent",
       date: "December 2023",
       photos: [
-        { src: larsImg, alt: "Lars scoort", caption: "Lars met een prachtige finish" },
-        { src: runeImg, alt: "Rune in duel", caption: "Rune wint het middenveldduel" },
-        { src: teamPhoto, alt: "Team huddle", caption: "Tactische bespreking tijdens de pauze" },
-        { src: zulteTifoImg, alt: "Supporters", caption: "Onze trouwe supporters" }
-      ]
+        { src: larsImg, alt: "Lars scoort", type: "photo" },
+        { src: runeImg, alt: "Rune in duel", type: "photo" },
+        { src: teamPhoto, alt: "Team huddle", type: "photo" },
+        { src: zulteTifoImg, alt: "Supporters", type: "photo" },
+      ],
     },
     {
       id: "herfst-2023",
@@ -69,33 +97,78 @@ const Gallery = () => {
       location: "Voetbalcomplex Kortrijk",
       date: "Oktober 2023",
       photos: [
-        { src: gillesImg, alt: "Gilles dirigeert", caption: "Kapitein Gilles geeft instructies" },
-        { src: heroImg, alt: "Warming-up", caption: "Warming-up voor de finale" },
-        { src: wannesImg, alt: "Wannes kopt", caption: "Kopduel gewonnen door Wannes" },
-        { src: krijnImg, alt: "Krijn passt", caption: "Prachtige pass van Krijn" }
-      ]
-    }
+        { src: gillesImg, alt: "Gilles dirigeert", type: "photo" },
+        { src: heroImg, alt: "Warming-up", type: "photo" },
+        { src: wannesImg, alt: "Wannes kopt", type: "photo" },
+        { src: krijnImg, alt: "Krijn passt", type: "photo" },
+      ],
+    },
   ];
 
-  const allPhotos = tournaments.flatMap(tournament => 
-    tournament.photos.map(photo => ({
+  const allPhotos = tournaments.flatMap((tournament) =>
+    tournament.photos.map((photo) => ({
       ...photo,
-      tournament: tournament.name
+      tournament: tournament.name,
     }))
   );
 
-  const filteredPhotos = selectedTournament === "all" 
-    ? allPhotos 
-    : tournaments.find(t => t.id === selectedTournament)?.photos || [];
+  const filteredPhotos =
+    selectedTournament === "all"
+      ? allPhotos
+      : tournaments.find((t) => t.id === selectedTournament)?.photos || [];
 
-  const currentTournament = tournaments.find(t => t.id === selectedTournament);
+  // Mix partners randomly between photos
+  const mixPhotosWithPartners = (photos) => {
+    if (photos.length === 0) return [];
 
-  const openModal = (photo) => {
-    setSelectedImage(photo);
+    const mixed = [...photos];
+    const partnersToInsert = [...partners];
+
+    // Insert partners at random positions (but not at the very beginning)
+    partnersToInsert.forEach((partner, index) => {
+      const minPosition = Math.max(2, index * 3);
+      const maxPosition = Math.min(mixed.length, minPosition + 4);
+      const randomPosition =
+        Math.floor(Math.random() * (maxPosition - minPosition)) + minPosition;
+      mixed.splice(randomPosition, 0, partner);
+    });
+
+    return mixed;
   };
 
-  const closeModal = () => {
-    setSelectedImage(null);
+  const mixedContent = mixPhotosWithPartners(filteredPhotos);
+
+  // Convert to react-image-gallery format (only photos for the lightbox)
+  const galleryImages = filteredPhotos.map((photo) => ({
+    original: photo.src,
+    thumbnail: photo.src,
+  }));
+
+  const currentTournament = tournaments.find(
+    (t) => t.id === selectedTournament
+  );
+
+  const handleItemClick = (item, index) => {
+    if (item.type === "photo") {
+      // Find the photo index in the filtered photos array (excluding partners)
+      const photoIndex = filteredPhotos.findIndex(
+        (photo) => photo.src === item.src
+      );
+      setStartIndex(photoIndex);
+      setShowGallery(true);
+    } else if (item.type === "partner") {
+      if (item.url) {
+        window.open(item.url, "_blank");
+      }
+    }
+  };
+
+  // Masonry breakpoints
+  const breakpointColumns = {
+    default: 4,
+    1200: 3,
+    768: 2,
+    480: 1,
   };
 
   return (
@@ -121,16 +194,18 @@ const Gallery = () => {
             <div className="gallery-filters">
               <h2>Selecteer Tornooi</h2>
               <div className="filter-buttons">
-                <button 
+                <button
                   className={selectedTournament === "all" ? "active" : ""}
                   onClick={() => setSelectedTournament("all")}
                 >
                   Alle Foto's
                 </button>
-                {tournaments.map(tournament => (
+                {tournaments.map((tournament) => (
                   <button
                     key={tournament.id}
-                    className={selectedTournament === tournament.id ? "active" : ""}
+                    className={
+                      selectedTournament === tournament.id ? "active" : ""
+                    }
                     onClick={() => setSelectedTournament(tournament.id)}
                   >
                     {tournament.name}
@@ -143,47 +218,70 @@ const Gallery = () => {
               <div className="tournament-info">
                 <h3>{currentTournament.name}</h3>
                 <div className="tournament-details">
-                  <span className="location">📍 {currentTournament.location}</span>
+                  <span className="location">
+                    📍 {currentTournament.location}
+                  </span>
                   <span className="date">📅 {currentTournament.date}</span>
                 </div>
               </div>
             )}
 
-            <div className="photo-grid">
-              {filteredPhotos.map((photo, index) => (
-                <div key={index} className="photo-item" onClick={() => openModal(photo)}>
-                  <img src={photo.src} alt={photo.alt} />
-                  <div className="photo-overlay">
-                    <div className="photo-caption">
-                      <h4>{photo.caption}</h4>
-                      {selectedTournament === "all" && photo.tournament && (
-                        <p className="photo-tournament">{photo.tournament}</p>
+            <div className="masonry-gallery-container">
+              {mixedContent.length > 0 ? (
+                <Masonry
+                  breakpointCols={breakpointColumns}
+                  className="masonry-grid"
+                  columnClassName="masonry-grid-column"
+                >
+                  {mixedContent.map((item, index) => (
+                    <div
+                      key={`${item.type}-${index}`}
+                      className={`masonry-item ${
+                        item.type === "partner" ? "partner-item" : "photo-item"
+                      }`}
+                      onClick={() => handleItemClick(item, index)}
+                    >
+                      <img
+                        src={item.type === "photo" ? item.src : item.logo}
+                        alt={item.type === "photo" ? item.alt : item.name}
+                        loading="lazy"
+                      />
+                      {item.type === "partner" && (
+                        <div className="partner-overlay">
+                          <span className="partner-text">Partner</span>
+                        </div>
                       )}
                     </div>
-                  </div>
+                  ))}
+                </Masonry>
+              ) : (
+                <div className="no-photos">
+                  <p>Geen foto's gevonden voor dit tornooi.</p>
                 </div>
-              ))}
+              )}
             </div>
-
-            {filteredPhotos.length === 0 && (
-              <div className="no-photos">
-                <p>Geen foto's gevonden voor dit tornooi.</p>
-              </div>
-            )}
           </div>
         </section>
 
-        {selectedImage && (
-          <div className="modal-overlay" onClick={closeModal}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={closeModal}>&times;</button>
-              <img src={selectedImage.src} alt={selectedImage.alt} />
-              <div className="modal-caption">
-                <h3>{selectedImage.caption}</h3>
-                {selectedImage.tournament && (
-                  <p className="modal-tournament">{selectedImage.tournament}</p>
-                )}
-              </div>
+        {showGallery && (
+          <div className="lightbox-overlay">
+            <div className="lightbox-container">
+              <button
+                className="lightbox-close"
+                onClick={() => setShowGallery(false)}
+              >
+                &times;
+              </button>
+              <ImageGallery
+                items={galleryImages}
+                startIndex={startIndex}
+                showThumbnails={true}
+                showPlayButton={false}
+                showFullscreenButton={true}
+                showNav={true}
+                onScreenChange={() => {}}
+                onSlide={(index) => setStartIndex(index)}
+              />
             </div>
           </div>
         )}
@@ -192,4 +290,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default PhotoGallery;

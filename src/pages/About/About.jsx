@@ -116,7 +116,7 @@ const About = () => {
           </div>
           <div className="container">
             <div className="hero-content">
-              <h1>Over Fadroei Poelekes</h1>
+              <h1>Over Fadroei <span className="highlight">Poelekes</span></h1>
               <p className="hero-subtitle">
                 Zeven vrienden, één droom: samen sporten en plezier hebben
               </p>

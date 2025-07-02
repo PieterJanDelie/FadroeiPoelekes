@@ -4,14 +4,12 @@
 
 .about-hero {
   position: relative;
-  min-height: 100vh; /* Changed from 70vh to 100vh for full screen hero */
+  height: 100vh; /* Changed from min-height to height for exact viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(135deg, #2d5016 0%, #1a2f0b 100%);
-  margin-top: -80px; /* Negative margin to account for header height */
-  padding-top: 80px; /* Add padding to prevent content being hidden behind header */
 }
 
 .hero-background {
@@ -464,7 +462,7 @@
 .modal-number {
   position: absolute;
   bottom: -30px;
-  right: 0;
+  left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 60px;
@@ -536,9 +534,7 @@
 
 @media (max-width: 768px) {
   .about-hero {
-    min-height: 80vh; /* Smaller on mobile */
-    margin-top: -60px; /* Adjust for smaller mobile header */
-    padding-top: 60px;
+    height: 100vh; /* Keep full height on mobile */
   }
 
   .about-hero h1 {
@@ -689,7 +685,6 @@
   }
 
   .about-hero {
-    margin-top: -50px;
-    padding-top: 50px;
+    height: 100vh; /* Keep full height on smallest screens too */
   }
 }
