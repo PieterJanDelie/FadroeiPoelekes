@@ -1,15 +1,17 @@
 .about-page {
-  padding-top: 0;
+  /* Remove padding-top: 0 to allow transparent header to work */
 }
 
 .about-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 100vh; /* Changed from 70vh to 100vh for full screen hero */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(135deg, #2d5016 0%, #1a2f0b 100%);
+  margin-top: -80px; /* Negative margin to account for header height */
+  padding-top: 80px; /* Add padding to prevent content being hidden behind header */
 }
 
 .hero-background {
@@ -534,7 +536,9 @@
 
 @media (max-width: 768px) {
   .about-hero {
-    min-height: 60vh;
+    min-height: 80vh; /* Smaller on mobile */
+    margin-top: -60px; /* Adjust for smaller mobile header */
+    padding-top: 60px;
   }
 
   .about-hero h1 {
@@ -682,5 +686,10 @@
 
   .modal-details {
     padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .about-hero {
+    margin-top: -50px;
+    padding-top: 50px;
   }
 }

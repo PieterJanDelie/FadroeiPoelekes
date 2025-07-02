@@ -103,7 +103,7 @@ const About = () => {
   };
 
   return (
-    <DefaultLayout>
+    <DefaultLayout header={true} transparentHeader={true}>
       <div className="about-page">
         <section className="about-hero">
           <div className="hero-background">
@@ -116,9 +116,6 @@ const About = () => {
           </div>
           <div className="container">
             <div className="hero-content">
-              <div className="hero-badge">
-                <span className="badge-text">Est. 2020</span>
-              </div>
               <h1>Over Fadroei Poelekes</h1>
               <p className="hero-subtitle">
                 Zeven vrienden, één droom: samen sporten en plezier hebben

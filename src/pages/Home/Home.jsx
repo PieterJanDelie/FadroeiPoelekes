@@ -7,7 +7,7 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <DefaultLayout header={true}>
+    <DefaultLayout header={true} transparentHeader={true}>
       <Hero />
       <TeamIntro />
       <Partners />

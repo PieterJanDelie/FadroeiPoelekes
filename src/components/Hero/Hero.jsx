@@ -41,7 +41,7 @@ const Hero = () => {
           <Link to="/tournaments" className="btn btn-primary">
             Bekijk Tornooien
           </Link>
-          <Link to="/about" className="btn btn-secondary">
+          <Link to="/about" className="btn btn-primary" style={{ backgroundColor: "#2D5016" }}>
             De poelekes
           </Link>
         </div>
