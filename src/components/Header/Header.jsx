@@ -81,7 +81,7 @@ const Header = ({ transparentHeader = false }) => {
             }`}
             onClick={closeMenu}
           >
-            Tornooien
+            Toernooien
           </Link>
           <Link
             to="/gallery"

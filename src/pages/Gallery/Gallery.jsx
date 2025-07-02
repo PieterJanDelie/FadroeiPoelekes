@@ -57,19 +57,19 @@ const PhotoGallery = () => {
   const tournaments = [
     {
       id: "zomer-2024",
-      name: "Zomertornooi 2024",
+      name: "Zomertoernooi 2024",
       location: "Sportpark Waregem",
       date: "Juli 2024",
       photos: [
-        { src: teamPhoto, alt: "Team foto Zomertornooi 2024", type: "photo" },
-        { src: zulteTifoImg, alt: "Sfeerbeeld Zomertornooi", type: "photo" },
+        { src: teamPhoto, alt: "Team foto Zomertoernooi 2024", type: "photo" },
+        { src: zulteTifoImg, alt: "Sfeerbeeld Zomertoernooi", type: "photo" },
         { src: gillesImg, alt: "Gilles in actie", type: "photo" },
         { src: wannesImg, alt: "Wannes verdedigt", type: "photo" },
       ],
     },
     {
       id: "lente-2024",
-      name: "Lentetornooi 2024",
+      name: "Lentetoernooi 2024",
       location: "Sportcomplex Deinze",
       date: "April 2024",
       photos: [
@@ -81,7 +81,7 @@ const PhotoGallery = () => {
     },
     {
       id: "winter-2023",
-      name: "Wintertornooi 2023/24",
+      name: "Wintertoernooi 2023/24",
       location: "Indoor Sporthal Gent",
       date: "December 2023",
       photos: [
@@ -183,7 +183,7 @@ const PhotoGallery = () => {
             <div className="hero-content">
               <h1>Foto Galerij</h1>
               <p className="hero-subtitle">
-                Onze mooiste momenten vastgelegd tijdens verschillende tornooien
+                Onze mooiste momenten vastgelegd tijdens verschillende toernooien
               </p>
             </div>
           </div>
@@ -192,7 +192,7 @@ const PhotoGallery = () => {
         <section className="gallery-content">
           <div className="container">
             <div className="gallery-filters">
-              <h2>Selecteer Tornooi</h2>
+              <h2>Selecteer Toernooi</h2>
               <div className="filter-buttons">
                 <button
                   className={selectedTournament === "all" ? "active" : ""}
@@ -256,7 +256,7 @@ const PhotoGallery = () => {
                 </Masonry>
               ) : (
                 <div className="no-photos">
-                  <p>Geen foto's gevonden voor dit tornooi.</p>
+                  <p>Geen foto's gevonden voor dit toernooi.</p>
                 </div>
               )}
             </div>

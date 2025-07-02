@@ -99,14 +99,14 @@ const Contact = () => {
 
                   <div className="instagram-content">
                     <p>
-                      Blijf op de hoogte van al onze acties, tornooien en
+                      Blijf op de hoogte van al onze acties, toernooien en
                       behind-the-scenes momenten! Op onze Instagram vind je:
                     </p>
 
                     <ul className="instagram-features">
                       <li>📸 Exclusieve foto's van onze wedstrijden</li>
                       <li>🎥 Behind-the-scenes video's</li>
-                      <li>🏆 Live updates van tornooien</li>
+                      <li>🏆 Live updates van toernooien</li>
                       <li>👥 Team highlights en speler spotlights</li>
                       <li>🎉 Teambuilding activiteiten</li>
                       <li>📅 Aankondigingen van komende evenementen</li>
@@ -204,8 +204,8 @@ const Contact = () => {
                           required
                         >
                           <option value="">Kies een onderwerp</option>
-                          <option value="tornooi-info">
-                            Tornooi informatie
+                          <option value="toernooi-info">
+                            Toernooi informatie
                           </option>
                           <option value="partnership">
                             Partnership/Sponsoring

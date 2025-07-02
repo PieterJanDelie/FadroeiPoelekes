@@ -13,11 +13,11 @@ const Tournaments = () => {
   const upcomingTournaments = [
     {
       id: "zomer-2025",
-      name: "Zomertornooi 2025",
+      name: "Zomertoernooi 2025",
       date: "15-16 Juli 2025",
       location: "Sportpark Waregem",
       description:
-        "Het jaarlijkse zomertornooi met teams uit heel Vlaanderen. Een weekend vol voetbal, plezier en gezelligheid.",
+        "Het jaarlijkse zomertoernooi met teams uit heel Vlaanderen. Een weekend vol voetbal, plezier en gezelligheid.",
       type: "Voetbal",
       teams: 16,
       status: "upcoming",
@@ -55,7 +55,7 @@ const Tournaments = () => {
   const pastTournaments = [
     {
       id: "zomer-2024",
-      name: "Zomertornooi 2024",
+      name: "Zomertoernooi 2024",
       date: "Juli 2024",
       location: "Sportpark Waregem",
       description:
@@ -69,7 +69,7 @@ const Tournaments = () => {
     },
     {
       id: "lente-2024",
-      name: "Lentetornooi 2024",
+      name: "Lentetoernooi 2024",
       date: "April 2024",
       location: "Sportcomplex Deinze",
       description:
@@ -83,7 +83,7 @@ const Tournaments = () => {
     },
     {
       id: "winter-2023",
-      name: "Wintertornooi 2023/24",
+      name: "Wintertoernooi 2023/24",
       date: "December 2023",
       location: "Indoor Sporthal Gent",
       description:

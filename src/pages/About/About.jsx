@@ -147,7 +147,7 @@ const About = () => {
                   Het begon allemaal in 2020 toen zeven vrienden besloten om hun
                   liefde voor sport serieuzer aan te pakken. Wat begon als
                   casual weekend voetbal groeide uit tot deelname aan lokale
-                  tornooien.
+                  toernooien.
                 </p>
                 <p>
                   In 2021 ontwierpen we ons eigen logo en lieten we

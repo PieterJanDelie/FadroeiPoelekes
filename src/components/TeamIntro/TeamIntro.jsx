@@ -10,7 +10,7 @@ const TeamIntro = () => {
         <div className="intro-grid">
           <div className="intro-content">
             <h2 className="section-title">
-              Wie zijn <span className="highlight">Fadroei Poelekes</span>?
+              Wie zijn Fadroei <span className="highlight">Poelekes</span>?
             </h2>
 
             <p className="intro-text">
@@ -23,7 +23,7 @@ const TeamIntro = () => {
             <p className="intro-text">
               Onze reis begon als een groep vrienden die graag samen sportten.
               Nu hebben we onze eigen jerseys, logo, en een indrukwekkende lijst
-              van tornooien waar we aan deelgenomen hebben. We combineren
+              van toernooien waar we aan deelgenomen hebben. We combineren
               competitieve geest met plezier en respect voor onze tegenstanders.
             </p>
 
