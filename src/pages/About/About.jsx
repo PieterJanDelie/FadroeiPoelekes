@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import "./About.css";
 import teamPhoto from "../../assets/Images/ploegfoto.jpg";
@@ -12,85 +12,106 @@ import robinImg from "../../assets/Images/Robin.jpg";
 import runeImg from "../../assets/Images/Rune.jpg";
 
 const About = () => {
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+
   const teamMembers = [
-    { 
-      name: "Gilles", 
+    {
+      name: "Gilles",
+      lastName: "Verhelst",
       nickname: "Gille",
       number: 1,
-      position: "Keeper & Kapitein", 
-      bio: "Onze onverstoorbaarbare laatste linie en natuurlijke leider. Met zijn kalmte en overzicht houdt hij het team bij elkaar.", 
+      position: "Keeper (c)",
+      bio: "Onze onverstoorbaarbare laatste linie en natuurlijke leider. Met zijn kalmte en overzicht houdt hij het team bij elkaar.",
       quote: "Leiderschap begint tussen de palen!",
       transferValue: "€85M",
-      image: gillesImg
+      image: gillesImg,
     },
-    { 
-      name: "Pieter-Jan", 
+    {
+      name: "Pieter-Jan",
+      lastName: "Delie",
       nickname: "PJ",
       number: 3,
-      position: "Verdediger", 
-      bio: "Solide verdediger met een uitstekende tackle. Zijn defensieve instinct en positiespel houden de tegenstander op afstand.", 
+      position: "CV",
+      bio: "Solide verdediger met een uitstekende tackle. Zijn defensieve instinct en positiespel houden de tegenstander op afstand.",
       quote: "Verdedigen is een teameffort",
       transferValue: "€45M",
-      image: pieterJanImg
+      image: pieterJanImg,
     },
-    { 
-      name: "Wannes", 
+    {
+      name: "Wannes",
+      lastName: "Vandeweghe",
       nickname: "Wanne",
       number: 4,
-      position: "Verdediger", 
-      bio: "Veelzijdige verdediger die ook graag mee opkomt in de aanval. Zijn snelheid en overzicht maken hem onmisbaar.", 
+      position: "CV",
+      bio: "Veelzijdige verdediger die ook graag mee opkomt in de aanval. Zijn snelheid en overzicht maken hem onmisbaar.",
       quote: "Aanvallen begint bij de verdediging",
       transferValue: "€52M",
-      image: wannesImg
+      image: wannesImg,
     },
-    { 
-      name: "Krijn", 
+    {
+      name: "Krijn",
+      lastName: "Vanommeslaeghe",
       nickname: "Krijntje",
       number: 6,
-      position: "Centrale Middenvelder", 
-      bio: "De verbindingsschakel tussen verdediging en aanval. Zijn passing en spelinterpretatie zijn van onschatbare waarde.", 
+      position: "CM",
+      bio: "De verbindingsschakel tussen verdediging en aanval. Zijn passing en spelinterpretatie zijn van onschatbare waarde.",
       quote: "Het spel begint bij het middenveld",
       transferValue: "€78M",
-      image: krijnImg
+      image: krijnImg,
     },
-    { 
-      name: "Rune", 
+    {
+      name: "Rune",
+      lastName: "Messiaen",
       nickname: "Ruuntje",
       number: 8,
-      position: "Centrale Middenvelder", 
-      bio: "Dynamische middenvelder met een onvermoeibare motor. Zorgt voor de balans tussen aanval en verdediging.", 
+      position: "CM",
+      bio: "Dynamische middenvelder met een onvermoeibare motor. Zorgt voor de balans tussen aanval en verdediging.",
       quote: "Elke bal is een nieuwe kans",
       transferValue: "€63M",
-      image: runeImg
+      image: runeImg,
     },
-    { 
-      name: "Robin", 
+    {
+      name: "Robin",
+      lastName: "Demeestere",
       nickname: "Robbe",
       number: 7,
-      position: "Rechtsbuiten", 
-      bio: "Snelle buitenspeler met gevaarlijke voorzetten. Zijn dribbles en crosses creëren kansen voor het team.", 
+      position: "RB",
+      bio: "Snelle buitenspeler met gevaarlijke voorzetten. Zijn dribbles en crosses creëren kansen voor het team.",
       quote: "Snelheid opent alle deuren",
       transferValue: "€71M",
-      image: robinImg
+      image: robinImg,
     },
-    { 
-      name: "Lars", 
+    {
+      name: "Lars",
+      lastName: "Buyck",
       nickname: "Larsie",
       number: 10,
-      position: "Speler/Coach & Spits", 
-      bio: "De tactische meesterbrein en doelgerichte afmaker. Combineert zijn kennis van het spel met een neus voor goals.", 
+      position: "SP/Coach",
+      bio: "De tactische meesterbrein en doelgerichte afmaker. Combineert zijn kennis van het spel met een neus voor goals.",
       quote: "Voetbal is schaken met je voeten",
       transferValue: "€95M",
-      image: larsImg
-    }
+      image: larsImg,
+    },
   ];
+
+  const openPlayerModal = (player) => {
+    setSelectedPlayer(player);
+  };
+
+  const closePlayerModal = () => {
+    setSelectedPlayer(null);
+  };
 
   return (
     <DefaultLayout>
       <div className="about-page">
         <section className="about-hero">
           <div className="hero-background">
-            <img src={zulteTifoImg} alt="Team Fadroei Poelekes" className="hero-bg-image" />
+            <img
+              src={zulteTifoImg}
+              alt="Team Fadroei Poelekes"
+              className="hero-bg-image"
+            />
             <div className="hero-overlay"></div>
           </div>
           <div className="container">
@@ -112,7 +133,7 @@ const About = () => {
                   <span className="stat-label">Totale Waarde</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">0+</span>
+                  <span className="stat-number">5+</span>
                   <span className="stat-label">Jaren Actief</span>
                 </div>
               </div>
@@ -126,19 +147,23 @@ const About = () => {
               <div className="history-content">
                 <h2>Onze Geschiedenis</h2>
                 <p>
-                  Het begon allemaal in 2020 toen zeven vrienden besloten om hun liefde 
-                  voor sport serieuzer aan te pakken. Wat begon als casual weekend voetbal 
-                  groeide uit tot deelname aan lokale tornooien.
+                  Het begon allemaal in 2020 toen zeven vrienden besloten om hun
+                  liefde voor sport serieuzer aan te pakken. Wat begon als
+                  casual weekend voetbal groeide uit tot deelname aan lokale
+                  tornooien.
                 </p>
                 <p>
-                  In 2021 ontwierpen we ons eigen logo en lieten we professionele jerseys maken. 
-                  Sindsdien hebben we deelgenomen aan meer dan 15 verschillende sporttornooien, 
-                  waarbij we niet alleen voetbal spelen, maar ook volleybal, basketball en andere sporten.
+                  In 2021 ontwierpen we ons eigen logo en lieten we
+                  professionele jerseys maken. Sindsdien hebben we deelgenomen
+                  aan meer dan 15 verschillende sporttornooien, waarbij we niet
+                  alleen voetbal spelen, maar ook volleybal, basketball en
+                  andere sporten.
                 </p>
                 <p>
-                  Onze naam "Fadroei Poelekes" weerspiegelt onze playful en vriendelijke houding. 
-                  We nemen sport serieus, maar vergeten nooit om plezier te hebben en respect 
-                  te tonen voor onze tegenstanders.
+                  Onze naam "Fadroei Poelekes" weerspiegelt onze playful en
+                  vriendelijke houding. We nemen sport serieus, maar vergeten
+                  nooit om plezier te hebben en respect te tonen voor onze
+                  tegenstanders.
                 </p>
               </div>
               <div className="history-image">
@@ -153,23 +178,73 @@ const About = () => {
             <h2 className="section-title">Leer ons team kennen</h2>
             <div className="members-grid">
               {teamMembers.map((member, index) => (
-                <div key={index} className="member-card">
-                  <div className="member-number">#{member.number}</div>
-                  <div className="transfer-value">{member.transferValue}</div>
+                <div
+                  key={index}
+                  className="member-card"
+                  onClick={() => openPlayerModal(member)}
+                >
                   <div className="member-photo-container">
-                    <img src={member.image} alt={member.name} className="member-photo" />
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="member-photo"
+                    />
+                    <div className="member-overlay">
+                      <div className="member-number">#{member.number}</div>
+                      <div className="member-info-overlay">
+                        <h3 className="member-name">{member.lastName}</h3>
+                        <span className="member-firstname">{member.name}</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="member-name">
-                    {member.name} <span className="nickname">"{member.nickname}"</span>
-                  </h3>
-                  <span className="member-position">{member.position}</span>
-                  <p className="member-bio">{member.bio}</p>
-                  <blockquote className="member-quote">"{member.quote}"</blockquote>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Player Modal */}
+        {selectedPlayer && (
+          <div className="player-modal-overlay" onClick={closePlayerModal}>
+            <div className="player-modal" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePlayerModal}>
+                ×
+              </button>
+              <div className="modal-content">
+                <div className="modal-header">
+                  <div className="modal-photo-container">
+                    <img
+                      src={selectedPlayer.image}
+                      alt={selectedPlayer.name}
+                      className="modal-photo"
+                    />
+                  </div>
+                  <div className="modal-info">
+                    <div className="modal-number">#{selectedPlayer.number}</div>
+                    <h3 className="modal-name">
+                      {selectedPlayer.lastName}
+                      <span className="modal-firstname">
+                        {selectedPlayer.name}
+                      </span>
+                    </h3>
+                    <span className="modal-position">
+                      {selectedPlayer.position}
+                    </span>
+                    <div className="modal-transfer-value">
+                      {selectedPlayer.transferValue}
+                    </div>
+                  </div>
+                </div>
+                <div className="modal-details">
+                  <p className="modal-bio">{selectedPlayer.bio}</p>
+                  <blockquote className="modal-quote">
+                    "{selectedPlayer.quote}"
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </DefaultLayout>
   );
