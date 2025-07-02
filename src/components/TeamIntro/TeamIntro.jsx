@@ -7,7 +7,7 @@ const TeamIntro = () => {
   const achievements = [
     { icon: "🏆", title: "Lokaal Kampioen", description: "Voetbal Zomertoernooi 2024" },
     { icon: "🥈", title: "Tweede Plaats", description: "Volleybal League 2024" },
-    { icon: "🎖️", title: "Fair Play Award", description: "Basketball Toernooi 2023" },
+    { icon: "🎖️", title: "Goe geprobeerd", description: "Basketball Toernooi 2023" },
     { icon: "⚽", title: "0+ Tornooien", description: "Sinds onze oprichting" },
   ];
 
@@ -50,7 +50,7 @@ const TeamIntro = () => {
             </div>
             
             <Link to="/about" className="learn-more-btn">
-              Leer ons beter kennen
+              Leer het team kennen
             </Link>
           </div>
           

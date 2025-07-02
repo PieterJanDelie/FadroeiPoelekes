@@ -23,15 +23,15 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <ul className="footer-links">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/tournaments">Tournaments</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/about">Ons team</Link></li>
+            <li><Link to="/tournaments">Tornooien</Link></li>
+            <li><Link to="/gallery">Gallerij</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
         
         <div className="footer-section">
-          <h3>Follow Our Journey</h3>
+          <h3>Volg onze avonturen</h3>
           <div className="social-links">
             <a href="#" className="social-link" aria-label="Facebook">📘</a>
             <a href="#" className="social-link" aria-label="Instagram">📷</a>
