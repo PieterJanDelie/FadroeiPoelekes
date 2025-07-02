@@ -1,53 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/Images/Fadroei.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "Ons team" },
-    { path: "/tournaments", label: "Tornooien" },
-    { path: "/gallery", label: "Gallerij" },
-    { path: "/contact", label: "Contact" }
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="header">
+    <header
+      className={`header ${
+        isHomePage && !isScrolled ? "header-transparent" : "header-solid"
+      }`}
+    >
       <div className="header-container">
-        <Link to="/" className="logo-link">
-          <img src={logo} alt="Fadroei Poelekes Logo" className="logo" />
+        <Link to="/" className="header-logo" onClick={closeMenu}>
+          <img src={logo} alt="Fadroei Poelekes" className="logo-img" />
           <span className="team-name">Fadroei Poelekes</span>
         </Link>
-        
-        <nav className="nav">
-          <ul className={`nav-list ${isMenuOpen ? 'nav-open' : ''}`}>
-            {navItems.map((item) => (
-              <li key={item.path} className="nav-item">
-                <Link 
-                  to={item.path} 
-                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          
-          <button 
-            className="mobile-menu-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
+
+        <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
+          <Link to="/" className="nav-link" onClick={closeMenu}>
+            Home
+          </Link>
+          <Link to="/about" className="nav-link" onClick={closeMenu}>
+            Ons Team
+          </Link>
+          <Link to="/tournaments" className="nav-link" onClick={closeMenu}>
+            Tornooien
+          </Link>
+          <Link to="/gallery" className="nav-link" onClick={closeMenu}>
+            Gallerij
+          </Link>
+          <Link to="/contact" className="nav-link" onClick={closeMenu}>
+            Contact
+          </Link>
         </nav>
+
+        <button
+          className={`menu-toggle ${isMenuOpen ? "menu-open" : ""}`}
+          onClick={toggleMenu}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
   );

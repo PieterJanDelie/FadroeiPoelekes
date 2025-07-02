@@ -13,9 +13,6 @@ const Hero = () => {
       </div>
 
       <div className="hero-content">
-        <div className="hero-logo-container">
-          <img src={logo} alt="Fadroei Poelekes Logo" className="hero-logo" />
-        </div>
 
         <h1 className="hero-title">
           Fadroei <span className="highlight">Poelekes</span>
